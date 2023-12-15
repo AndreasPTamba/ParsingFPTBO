@@ -1,5 +1,5 @@
 from controller.cnf import get_set_of_production, get_raw_set_of_production
-# import graphviz
+import graphviz
 
 TRIANGULAR_TABLE = {}
 PARSE_TREE = None
@@ -137,32 +137,32 @@ def search_left(listVar, checkPos, curPost, posX, posY, limit, prodRules):
             if isFound:
                 search_left(listVar, checkPos-1, checkPos, posX, posY, limit, prodRules)
 
-# def get_parse_tree(inputString):
-#     if is_accepted(inputString):
-#         global TRIANGULAR_TABLE
-#         global PARSE_TREE
-#         global PREV_NODE
+def get_parse_tree(inputString):
+    if is_accepted(inputString):
+        global TRIANGULAR_TABLE
+        global PARSE_TREE
+        global PREV_NODE
 
-#         PARSE_TREE = graphviz.Graph("G", strict=True)
-#         PARSE_TREE.attr("node", shape="circle")
-#         PARSE_TREE.node("K")
+        PARSE_TREE = graphviz.Graph("G", strict=True)
+        PARSE_TREE.attr("node", shape="circle")
+        PARSE_TREE.node("K")
 
-#         prodRules = get_raw_set_of_production()
-#         inputString = inputString.lower().split(" ")
+        prodRules = get_raw_set_of_production()
+        inputString = inputString.lower().split(" ")
 
-#         for i in range(1, len(inputString)+1):
-#             baseList = TRIANGULAR_TABLE[(i, i)]
-#             childNode = str(inputString[i-1] + " (" + str(i) + "," + str(i) + ")")
-#             parentNode = str(baseList[-1] + " (" + str(i) + "," + str(i) + ")")
-#             PARSE_TREE.edge(parentNode, childNode)
-#             PREV_NODE = parentNode
-#             if (len(baseList) == 1):
-#                 search_left(baseList, len(baseList)-1, len(baseList)-1, i, i, len(inputString), prodRules)
-#             else:
-#                 search_left(baseList, len(baseList)-2, len(baseList)-1, i, i, len(inputString), prodRules)
-#         return PARSE_TREE
-#     else:
-#         return None
+        for i in range(1, len(inputString)+1):
+            baseList = TRIANGULAR_TABLE[(i, i)]
+            childNode = str(inputString[i-1] + " (" + str(i) + "," + str(i) + ")")
+            parentNode = str(baseList[-1] + " (" + str(i) + "," + str(i) + ")")
+            PARSE_TREE.edge(parentNode, childNode)
+            PREV_NODE = parentNode
+            if (len(baseList) == 1):
+                search_left(baseList, len(baseList)-1, len(baseList)-1, i, i, len(inputString), prodRules)
+            else:
+                search_left(baseList, len(baseList)-2, len(baseList)-1, i, i, len(inputString), prodRules)
+        return PARSE_TREE
+    else:
+        return None
 
 def get_table_element(inputString):
     global TRIANGULAR_TABLE
