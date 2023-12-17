@@ -144,7 +144,7 @@ def get_parse_tree(inputString):
         global PREV_NODE
 
         PARSE_TREE = graphviz.Graph("G", strict=True)
-        PARSE_TREE.attr("node", shape="circle")
+        PARSE_TREE.attr("node", shape="rectangle")
         PARSE_TREE.node("K")
 
         prodRules = get_raw_set_of_production()

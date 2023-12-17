@@ -74,7 +74,7 @@ def get_set_of_production():
 def get_raw_set_of_production():
     global RESULT
     RESULT.clear()
-    f = open("./modul/set_of_rule.txt", "r", encoding="utf-8")
+    f = open("./model/set_of_rule.txt", "r", encoding="utf-8")
     for lines in f:
         line = lines.splitlines()
         line = line[0].split(" -> ")
