@@ -1,2 +1,2 @@
 # ParsingFPTBO
-Parsing denga CFG
+Parsing dengan CFG
