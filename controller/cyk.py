@@ -4,6 +4,7 @@ import graphviz
 TRIANGULAR_TABLE = {}
 PARSE_TREE = None
 PREV_NODE = None
+SENTANCE_PATTERN = []
 
 # CYK Algorithm
 def is_accepted(inputString):
@@ -71,12 +72,15 @@ def is_parent(posX, posY, limit, check, prodRules):
 def search_left(listVar, checkPos, curPost, posX, posY, limit, prodRules):
     global PARSE_TREE
     global PREV_NODE
+    global SENTANCE_PATTERN
 
     structureTier = ["S", "P", "O", "Pel", "Ket"]
 
     if len(listVar) == 1:
         if (listVar[0] == "K"):
             PARSE_TREE.edge("K", PREV_NODE)
+            if PREV_NODE not in SENTANCE_PATTERN:
+                SENTANCE_PATTERN.append(PREV_NODE)
             return
         else:
             res, x, y = is_parent(posX, posY, limit, listVar[curPost], prodRules)
@@ -96,6 +100,8 @@ def search_left(listVar, checkPos, curPost, posX, posY, limit, prodRules):
                 PARSE_TREE.edge(parentNode, PREV_NODE)
                 PREV_NODE = parentNode
                 PARSE_TREE.edge("K", parentNode)
+                if parentNode not in SENTANCE_PATTERN:
+                    SENTANCE_PATTERN.append(parentNode)
                 return
             else:
                 res2, x2, y2 = is_parent(posX, posY, limit, listVar[curPost], prodRules)
@@ -113,6 +119,9 @@ def search_left(listVar, checkPos, curPost, posX, posY, limit, prodRules):
                 parentNode = str(listVar[checkPos] + " (" + str(posX) + "," + str(posY) + ")")
                 PARSE_TREE.edge(parentNode, PREV_NODE)
                 PREV_NODE = parentNode
+                PARSE_TREE.edge("K", parentNode)
+                if parentNode not in SENTANCE_PATTERN:
+                    SENTANCE_PATTERN.append(parentNode)
                 search_left(TRIANGULAR_TABLE[(x, y)], len(TRIANGULAR_TABLE[(x, y)])-2, len(TRIANGULAR_TABLE[(x, y)])-1, x, y, limit, prodRules)
             else:
                 search_left(listVar, checkPos-1, curPost, posX, posY, limit, prodRules)
@@ -121,7 +130,7 @@ def search_left(listVar, checkPos, curPost, posX, posY, limit, prodRules):
             PARSE_TREE.edge(parentNode, PREV_NODE)
             PREV_NODE = parentNode
             res, x, y = is_parent(posX, posY, limit, listVar[checkPos], prodRules)
-            if res:
+            if res == True:
                 temp = TRIANGULAR_TABLE[(x, y)][-1]
                 parentNode = str(temp + " (" + str(x) + "," + str(y) + ")")
                 PARSE_TREE.edge(parentNode, PREV_NODE)
@@ -144,6 +153,8 @@ def get_parse_tree(inputString):
         global TRIANGULAR_TABLE
         global PARSE_TREE
         global PREV_NODE
+        global SENTANCE_PATTERN
+        SENTANCE_PATTERN.clear()
 
         PARSE_TREE = graphviz.Graph("G", strict=True)
         PARSE_TREE.attr("node", shape="rectangle")
@@ -182,3 +193,14 @@ def get_table_element(inputString):
         result.append(temp)
     result.append(inputString.split(" "))
     return result
+
+def get_sentance_pattern():
+    global SENTANCE_PATTERN
+    pattern = ""
+    for i in SENTANCE_PATTERN:
+        if i != SENTANCE_PATTERN[-1]:
+            pattern += i + " + "
+        else:
+            pattern += i
+
+    return pattern
