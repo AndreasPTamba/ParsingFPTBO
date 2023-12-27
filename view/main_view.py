@@ -16,7 +16,7 @@ def MainView():
         st.write("Masukkan kalimat di atas untuk memulai.")
 
     st.header("Tabel")
-    if is_accepted(input_sentence):
+    if input_sentence != "":
         st.table(get_table_element(input_sentence))
     
     st.header("Parse Tree")

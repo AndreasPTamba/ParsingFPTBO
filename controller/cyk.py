@@ -5,19 +5,20 @@ TRIANGULAR_TABLE = {}
 PARSE_TREE = None
 PREV_NODE = None
 
+# CYK Algorithm
 def is_accepted(inputString):
     global TRIANGULAR_TABLE
     TRIANGULAR_TABLE.clear()
-    prodRules = get_set_of_production()
-    inputString = inputString.lower().split(" ")
-    for i in range(1,len(inputString)+1):
+    prodRules = get_set_of_production()                 # Get CNF
+    inputString = inputString.lower().split(" ")        # Split input string
+    for i in range(1,len(inputString)+1):               # Create triangular table
         for j in range(i, len(inputString)+1):
             TRIANGULAR_TABLE[(i,j)] = []
-    for i in reversed(range(1, len(inputString)+1)):
-        for j in range(1, i+1):
-            if (j == j + len(inputString) - i):
+    for i in reversed(range(1, len(inputString)+1)):    # Fill triangular table
+        for j in range(1, i+1):                         
+            if (j == j + len(inputString) - i):         
                 tempList = []
-                for key, value in prodRules.items():
+                for key, value in prodRules.items(): 
                     for val in value:
                         if (val == inputString[j-1] and key not in tempList):
                             tempList.append(key)
@@ -37,16 +38,17 @@ def is_accepted(inputString):
                         if (val in tempList and key not in resultList):
                             resultList.append(key)
                 TRIANGULAR_TABLE[(j,j+len(inputString) - i)] = resultList
-    if "K" in TRIANGULAR_TABLE[(1, len(inputString))]:
+    if "K" in TRIANGULAR_TABLE[(1, len(inputString))]:  # Check if accepted
         return True
     else:
         return False
 
+# Parse Tree
 def is_parent(posX, posY, limit, check, prodRules):
     global TRIANGULAR_TABLE
     x = posX
     y = posY
-    while posX > 1 and posY <= limit:
+    while posX > 1 and posY <= limit:                       # Check left
         posX -= 1
         if TRIANGULAR_TABLE[(posX, posY)] != []:
             backVar = TRIANGULAR_TABLE[(posX, posY)][-1]
@@ -56,7 +58,7 @@ def is_parent(posX, posY, limit, check, prodRules):
             return [False, None, None]
     posX = x
     posY = y
-    while posX >= 1 and posY < limit:
+    while posX >= 1 and posY < limit:                       # Check right
         posY += 1
         if TRIANGULAR_TABLE[(posX, posY)] != []:
             backVar = TRIANGULAR_TABLE[(posX, posY)][-1]
@@ -164,6 +166,7 @@ def get_parse_tree(inputString):
     else:
         return None
 
+# Table
 def get_table_element(inputString):
     global TRIANGULAR_TABLE
     result = []
