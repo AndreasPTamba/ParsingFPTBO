@@ -14,9 +14,6 @@ def MainView():
             st.write("Kalimat tersebut tidak diterima.")
     else:
         st.write("Masukkan kalimat di atas untuk memulai.")
-    
-    if is_accepted(input_sentence):
-        st.write("Pola Kalimat = " + get_sentance_pattern())
 
     st.header("Tabel")
     if input_sentence != "":
@@ -25,3 +22,6 @@ def MainView():
     st.header("Parse Tree")
     if is_accepted(input_sentence):
         st.graphviz_chart(get_parse_tree(input_sentence))
+
+    if is_accepted(input_sentence):
+        st.subheader("Pola Kalimat = " + get_sentance_pattern())

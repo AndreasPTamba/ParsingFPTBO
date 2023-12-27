@@ -7,7 +7,7 @@ K -> S P O Pel
 K -> S P O Ket
 K -> S P O Pel Ket
 S -> NP
-P -> VP | PP | AdjP
+P -> VP | AdjP
 O -> NP
 Pel -> AdjP | VP | NP | PP
 Ket -> PP

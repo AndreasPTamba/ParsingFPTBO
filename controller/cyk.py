@@ -160,7 +160,7 @@ def get_parse_tree(inputString):
         PARSE_TREE.attr("node", shape="rectangle")
         PARSE_TREE.node("K")
 
-        prodRules = get_raw_set_of_production()
+        prodRules = get_set_of_production()
         inputString = inputString.lower().split(" ")
 
         for i in range(1, len(inputString)+1):
