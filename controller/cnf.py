@@ -35,7 +35,7 @@ def get_set_of_production():
                 if val not in tempList:
                     tempList.append(val.lower())
             RESULT[key] = tempList
-    phrases = ["NumP", "AdvP", "AdjP", "PP", "NP", "VP"]
+    phrases = ["AdjP", "PP", "NP", "VP"]
     remove_unit_production(phrases)
     patterns = ["S", "P", "O", "Pel", "Ket"]
     remove_unit_production(patterns)
@@ -67,8 +67,19 @@ def get_set_of_production():
                 else:
                     tempList.append(val)
             RESULT[key] = tempList
+    g = open("./model/cnf.txt", "w", encoding="utf-8")
     for key, value in tempDict.items():
         RESULT[key] = [value]
+    for key, value in RESULT.items():
+        g.write(key + " -> ")
+        for val in value:
+            if val == value[-1]:
+                g.write(val)
+            else:
+                g.write(val + " | ")
+        g.write("\n")
+    g.close()
+
     return RESULT
 
 def get_raw_set_of_production():
