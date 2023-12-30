@@ -1,5 +1,5 @@
 import streamlit as st
-from controller.cyk import is_accepted, get_table_element, get_parse_tree
+from controller.cyk import is_accepted, get_table_element, get_parse_tree, get_sentance_pattern
 
 def MainView():
     st.title("Parsing Kalimat Baku Bahasa Indonesia")
@@ -22,3 +22,6 @@ def MainView():
     st.header("Parse Tree")
     if is_accepted(input_sentence):
         st.graphviz_chart(get_parse_tree(input_sentence))
+
+    if is_accepted(input_sentence):
+        st.subheader("Pola Kalimat = " + get_sentance_pattern())

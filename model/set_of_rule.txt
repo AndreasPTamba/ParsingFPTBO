@@ -2,24 +2,23 @@ K -> S P
 K -> S P O
 K -> S P Pel
 K -> S P Ket
-K -> S P Pel Ket
 K -> S P O Pel
 K -> S P O Ket
 K -> S P O Pel Ket
 S -> NP
-P -> VP | PP | AdjP
+P -> VP | AdjP
 O -> NP
 Pel -> AdjP | VP | NP | PP
 Ket -> PP
-NP -> Noun | Pronoun | PropNoun | NP Pronoun | NP Noun | NP PropNoun | Num NP | NP AdjP
+NP -> Noun | Pronoun | PropNoun | NP Pronoun | NP Noun | NP PropNoun | Num NP | NP AdjP | NP VP
 VP -> Verb | VP Verb | Adv VP | AdjP VP
-AdjP -> Adj | AdjP Adj | Adv AdjP
+AdjP -> Adj | AdjP Adj | Adv AdjP | AdjP Adv
 PP -> Prep NP | Prep AdjP | Prep VP
-Noun -> kedatangan | tamu | rumah | keberhasilan | keindahannya | pemandangan | matahari | pantai | anak | semangat | atmosfer | perjalanan | cahaya | aroma | bunga | taman | pertunjukan | seni | malam | harmoni | diskusi | ruangan | imajinasi | danau | suasana | perjalanan | acara | pameran | siang | hari | juara | kelas | memunculkan | ide | hasil | selama | kecukupan | harga | pertemuan | nuansa | jalan | tugas | suasana | depan | karnaval | idaman | awal | hujan | udara | makanan | restoran | pedas | pertandingan | bola | mesin | mobil | wajah | seharian | bunga | suara | musik | konser | anjing | peliharaan | pakaian | pegunungan | harga | ukuran | dompet | tingkat | tol | permainan | video | saat | kopi | kedai | kota | lukisan | paham | buku | novel | ikan | badut | salmon | tim | kalimat
-Verb -> menyambut | terbenam | menawan | membawa | menciptakan | terasa | membahagiakan | menyegarkan | menjadi | menyenangkan | belajar | hidup | berpikir | terlihat | bekerja | pakai | menghibur | diadakan | selesai | berubah | capai | ubah
-Adj -> ceria | istimewa | baru | gemilang | dinamis | tenang | penuh | harmonis | panas | elegan | dingin | lancar | intens | nyaman | anggun | luar biasa | bersih | matang | fleksibel | cukup | gembira | riang | penting | mahal | menang | becek | sejuk | besar |  deras | seru | efisien | pahit | lelah | harum | keras | lucu | segar | cepat | sulit | indah | abstrak | menarik | salah
-Prep -> bagi | di | apabila | meskipun | dengan | kalau | setelah | untuk | kepada | ke
-Adv -> akan | sudah | telah | tidak | terlalu | sangat | juga | setiap | cukup | hanya | hampir | terkadang | melawan | dekat | ingin | nasional | karena
-Num -> satu | dua
-Pronoun -> itu | ini | sana | dia | kami | kalian | sini | saya | kamu | apa
-PropNoun -> budi
+Noun -> ibu | adik | nasi | hubungan | pertemanan | kota | keluarga | guru | prestasi | muridnya | teman | saat | kue | para | siswa | hari | keputusan | gadis | pemandangan | desa | suara | penyanyi | alunan | musik | rasa | sup | sayuran | es | teh | lemon | aroma | parfum | baju | rumah | gitar | kucing | mobil | bapak | kota | gedung | lapangan | bola | harga | sepatu | anak | kabar | ayah | pintu | dapur | warna | biru | ikan | mawar | merah | anjing | kaki | materi | konsep | pegawai | toko | pelanggan | matahari | pertunjukan | malam | semangat | tim | sepakbola | suasana | kerja | kantor | sedih | orang | dunia | kampung | udara | pagi | buku | kenanga | mobil | bunga | taman | cuaca | ruang | tamu | gedung-gedung | kaos | makanan | orang | bahan | baju | kucing | bocah | sekolah | kopi | harimau | halaman | kampung | anak | matematika | literasi | suhu | dasar | pipi | buah | jeruk | oranye | langit | hitam | kacamata | pria | bentuk | wajah | wanita | laju | pesawat | tugas | waktu
+Verb -> memasak | goreng | kuliah | diberikan | menyambut | libur | mengambil | bersepeda | membuat | mengecat | membelikan | menganggap | tugas | bermain | menggonggong | berjalan | menari | menggambar | melangkahkan | menjelaskan | terbenam | menawan | menarik | baca | tidur | berlari | diminum | berburu | ditempati | dibaca | digunakan | berolahraga | terbang | menyelesaikan | menunggu
+Adj -> cepat | dekat | jauh | bahagia | bangga | gembira | ragu-ragu | kecil | cantik | indah | merdu | klasik | lembut | lezat | segar | harum | merah | bagus | sederhana | indah | tua | mahal | putih | jinak | antik | populer | baru | megah | luas | kecil | muda | susah | keras | lambat | gemulai | baik | sulit | sabar | ramah | seni | tinggi | nyaman | pasti | selamat | kuat | becek | sejuk | tebal | menarik | panas | dramatis | megah | besar | rendah | dingin | lebam | sedih | tua | kikir | lembut | lincah | gemuh | gesit | panas | ganas | rindu | pintar | lapang | rapat | sempit | lebam | pekat | bulat | lonjong | singkat | lama
+Prep -> dari | setelah | dengan | dalam | di | untuk
+Adv -> sangat | selalu | sekali | cukup | akan | sedang | ingin | masih | terlalu | dengan | akan | bersama | sudah
+Num -> setiap
+Pronoun -> saya | itu | kami | dia | mereka | ini
+PropNoun -> atlantis | andi | buwit | tabanan | afgan | dodi | doni
