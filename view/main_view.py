@@ -9,9 +9,9 @@ def MainView():
     input_sentence = st.text_input("Kalimat", "")
     if input_sentence != "":
         if is_accepted(input_sentence):
-            st.write("Kalimat tersebut diterima.")
+            st.success('Kalimat tersebut diterima!', icon="✅")
         else:
-            st.write("Kalimat tersebut tidak diterima.")
+            st.error('Kalimat tersebut tidak diterima', icon="❌")
     else:
         st.write("Masukkan kalimat di atas untuk memulai.")
 
