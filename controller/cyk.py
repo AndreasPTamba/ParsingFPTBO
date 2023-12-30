@@ -79,8 +79,6 @@ def search_left(listVar, checkPos, curPost, posX, posY, limit, prodRules):
     if len(listVar) == 1:
         if (listVar[0] == "K"):
             PARSE_TREE.edge("K", PREV_NODE)
-            if PREV_NODE not in SENTANCE_PATTERN:
-                SENTANCE_PATTERN.append(PREV_NODE)
             return
         else:
             res, x, y = is_parent(posX, posY, limit, listVar[curPost], prodRules)
@@ -100,8 +98,6 @@ def search_left(listVar, checkPos, curPost, posX, posY, limit, prodRules):
                 PARSE_TREE.edge(parentNode, PREV_NODE)
                 PREV_NODE = parentNode
                 PARSE_TREE.edge("K", parentNode)
-                if parentNode not in SENTANCE_PATTERN:
-                    SENTANCE_PATTERN.append(parentNode)
                 return
             else:
                 res2, x2, y2 = is_parent(posX, posY, limit, listVar[curPost], prodRules)
@@ -119,9 +115,6 @@ def search_left(listVar, checkPos, curPost, posX, posY, limit, prodRules):
                 parentNode = str(listVar[checkPos] + " (" + str(posX) + "," + str(posY) + ")")
                 PARSE_TREE.edge(parentNode, PREV_NODE)
                 PREV_NODE = parentNode
-                PARSE_TREE.edge("K", parentNode)
-                if parentNode not in SENTANCE_PATTERN:
-                    SENTANCE_PATTERN.append(parentNode)
                 search_left(TRIANGULAR_TABLE[(x, y)], len(TRIANGULAR_TABLE[(x, y)])-2, len(TRIANGULAR_TABLE[(x, y)])-1, x, y, limit, prodRules)
             else:
                 search_left(listVar, checkPos-1, curPost, posX, posY, limit, prodRules)
@@ -136,6 +129,8 @@ def search_left(listVar, checkPos, curPost, posX, posY, limit, prodRules):
                 PARSE_TREE.edge(parentNode, PREV_NODE)
                 PREV_NODE = parentNode
                 search_left(TRIANGULAR_TABLE[(x, y)], len(TRIANGULAR_TABLE[(x, y)])-2, len(TRIANGULAR_TABLE[(x, y)])-1, x, y, limit, prodRules)
+            else:
+                return
         elif listVar[checkPos] not in structureTier and checkPos > 0:
             isFound = False
             for i in prodRules[listVar[checkPos]]:
@@ -160,7 +155,7 @@ def get_parse_tree(inputString):
         PARSE_TREE.attr("node", shape="rectangle")
         PARSE_TREE.node("K")
 
-        prodRules = get_set_of_production()
+        prodRules = get_raw_set_of_production()
         inputString = inputString.lower().split(" ")
 
         for i in range(1, len(inputString)+1):
