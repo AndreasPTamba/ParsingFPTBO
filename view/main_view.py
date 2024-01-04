@@ -19,9 +19,9 @@ def MainView():
     if input_sentence != "":
         st.table(get_table_element(input_sentence))
     
-    st.header("Parse Tree")
-    if is_accepted(input_sentence):
-        st.graphviz_chart(get_parse_tree(input_sentence))
+    # st.header("Parse Tree")
+    # if is_accepted(input_sentence):
+    #     st.graphviz_chart(get_parse_tree(input_sentence))
 
-    if is_accepted(input_sentence):
-        st.subheader("Pola Kalimat = " + get_sentance_pattern())
+    # if is_accepted(input_sentence):
+    #     st.subheader("Pola Kalimat = " + get_sentance_pattern())
